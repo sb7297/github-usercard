@@ -52,6 +52,54 @@ const followersArray = [];
       </div>
     </div>
 */
+function cardMaker(args) {
+  let card = document.createElement("div");
+  card.classList.add("card");
+  let img = document.createElement("img");
+  img.src = args.imageUrl;
+  let cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+
+  card.appendChild(img);
+  card.appendChild(cardInfo);
+
+  let h3 = document.createElement("h3");
+  h3.classList.add("name");
+  h3.textContent = args.userName;
+
+  let p1 = document.createElement("p");
+  p1.classList.add("username");
+  p1.textContent = args.userUserName;
+
+  let p2 = document.createElement("p");
+  p2.textContent = `Location: ${args.userLocation}`;
+
+  let p3 = document.createElement("p");
+  p3.textContent = "Profile:\n";
+  let a = document.createElement("a");
+  a.href = args.userProfileUrl;
+  a.textContent = args.userProfileUrl;
+  p3.appendChild(a);
+
+  let p4 = document.createElement("p");
+  p4.textContent = `Followers: ${args.userFollowers}`;
+
+  let p5 = document.createElement("p");
+  p5.textContent = `Following: ${args.userFollowing}`;
+
+  let p6 = document.createElement("p");
+  p6.textContent = `Bio: ${args.userBio}`;
+
+  cardInfo.appendChild(h3);
+  cardInfo.appendChild(p1);
+  cardInfo.appendChild(p2);
+  cardInfo.appendChild(p3);
+  cardInfo.appendChild(p4);
+  cardInfo.appendChild(p5);
+  cardInfo.appendChild(p6);
+
+  return card;
+}
 
 /*
   List of LS Instructors Github username's:
