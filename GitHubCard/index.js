@@ -4,8 +4,24 @@ import axios from 'axios';
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+function cleanInput(response) {
+  let args = {
+    imageUrl: response.data.avatar_url,
+    userName: response.data.name,
+    userUserName: response.data.login,
+    userLocation: response.data.location,
+    userProfileUrl: response.data.html_url,
+    userFollowers: response.data.followers,
+    userFollowing: response.data.following,
+    userBio: response.data.bio,
+  };
+  return args;
+}
+
 let resp = axios.get('https://api.github.com/users/sb7297').then(response => {
   console.log(response.data);
+  let cards = document.querySelector(".cards");
+  cards.appendChild(cardMaker(cleanInput(response)));
 });
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
